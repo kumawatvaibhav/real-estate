@@ -10,7 +10,7 @@ function Dashboard() {
     const fetchMyProps = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/properties/my", {
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/properties/my`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setMyProperties(res.data);
@@ -24,7 +24,7 @@ function Dashboard() {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/properties/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/properties/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMyProperties(myProperties.filter(p => p._id !== id));
@@ -47,7 +47,7 @@ function Dashboard() {
 
       <h3 className="text-xl font-semibold mb-4">My Properties</h3>
       {myProperties.length === 0 ? (
-        <p className="text-gray-500">You haven’t listed anything yet.</p>
+        <p className="text-gray-500">You haven't listed anything yet.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
           {myProperties.map((p) => (

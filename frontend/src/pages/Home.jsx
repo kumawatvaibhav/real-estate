@@ -190,7 +190,7 @@ function Home() {
 
   const fetchProperties = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/properties", {
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/properties`, {
         params: { location, maxPrice },
       });
       setProperties(res.data);

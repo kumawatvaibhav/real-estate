@@ -10,7 +10,7 @@ function PropertyDetail() {
     useEffect(() => {
         const fetchProperty = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/properties/${id}`);
+                const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/properties/${id}`);
                 setProperty(res.data);
             } catch (err) {
                 console.error("Failed to load property", err);

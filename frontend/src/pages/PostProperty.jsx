@@ -37,7 +37,7 @@ const PostProperty = () => {
 
         const token = localStorage.getItem("token");
 
-        const res = await axios.post("http://localhost:5000/api/properties/upload", imgData, {
+        const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/properties/upload`, imgData, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,
@@ -51,7 +51,7 @@ const PostProperty = () => {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:5000/api/properties",
+        `${import.meta.env.VITE_BACKEND_URL}/api/properties`,
         {
           ...formData,
           images: [imageUrl], // ✅ Make sure this is 'images' and it's an array
